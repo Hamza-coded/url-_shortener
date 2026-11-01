@@ -1,0 +1,4 @@
+.env
+check.py
+__pycache__
+.venv
