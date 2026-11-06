@@ -1,9 +1,12 @@
-from fastapi import FastAPI , Request 
+from fastapi import FastAPI , Request , Depends
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 import traceback
 from src.utils.Responses import AppError , AppResponse
-
+from src.schemas.response_schemas import Register
+from src.services.auth_service import register_service
+from src.config.db import get_db
+from sqlalchemy.ext.asyncio import AsyncSession
 app = FastAPI()
 
 @app.exception_handler(Exception)
@@ -36,6 +39,4 @@ def app_error (req : Request , err : AppError):
         } )
 
 
-@app.get("/test",response_model=AppResponse,status_code=401,)
-def test ():
-    return AppResponse()
+
