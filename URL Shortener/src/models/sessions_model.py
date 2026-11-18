@@ -8,8 +8,9 @@ class Session(Base):
 
     id : Mapped[int] = mapped_column(primary_key=True)
     user_id : Mapped[int] = mapped_column(
-        ForeignKey("users.id"),
-        nullable=False, index=True
+        ForeignKey("users.id",ondelete='CASCADE'),
+        nullable=False, index=True,
+        
     )
     refresh_token_hash : Mapped[str] = mapped_column(String,nullable=False)
     is_revoked : Mapped[bool] = mapped_column(Boolean,nullable=False,default=False)

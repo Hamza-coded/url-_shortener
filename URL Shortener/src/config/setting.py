@@ -6,6 +6,8 @@ class Settings(BaseSettings):
     MAILTRAP_PASSWORD: str
     MAILTRAP_PORT: str
     APP_EMAIL:str
+    REFRESH_TOKEN_KEY:str
+    ACCESS_TOKEN_KEY:str
 
 
 
